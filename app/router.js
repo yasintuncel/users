@@ -11,4 +11,6 @@ router.post('/', validate(validationObject), controllers.onPost);
 router.patch('/:id', controllers.onPatch);
 router.delete('/:id', controllers.onDelete);
 
+router.post('/login', validate(validationObject), controllers.onLogin);
+
 module.exports = router;
