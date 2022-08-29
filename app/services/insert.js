@@ -1,4 +1,4 @@
-const { Model } = require("../model");
+const { Model } = require("../database/model");
 
 const insert = function (data) {
     const model = Model(data);

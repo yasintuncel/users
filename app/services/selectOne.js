@@ -1,4 +1,4 @@
-const { Model } = require("../model");
+const { Model } = require("../database/model");
 
 const selectOne = function (id) {
     return Model.findById(id);

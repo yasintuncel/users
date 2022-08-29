@@ -1,4 +1,4 @@
-const { Model } = require("../model");
+const { Model } = require("../database/model");
 
 const remove = function (id) {
     return Model.findByIdAndDelete(id);
