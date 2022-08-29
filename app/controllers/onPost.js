@@ -1,4 +1,5 @@
 const httpStatus = require("http-status");
+const encryptPassword = require("../helpers/encryptPassword");
 const service = require("../services");
 
 function onPost(req, res) {
