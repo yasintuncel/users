@@ -1,12 +1,19 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
-    username: { type: String, unique: true, required: true }, // or email
+const ModelSchema = new mongoose.Schema({
+    email: { type: String, unique: true, required: true }, // or email
     passwordHash: { type: String, required: true },
-    role: { type: String, default: 'User' },
+    role: { type: String, default: 'Model' },
+    verificationCode: { type: String },
     token: { type: String }, // TODO will delete on PROD
 }, { timestamps: true, versionKey: false });
 
-const User = mongoose.model('users', UserSchema);
+ModelSchema.methods.toJSON = function () {
+    var obj = this.toObject(); //or var obj = this;
+    delete obj.passwordHash;
+    return obj;
+}
 
-module.exports = { User, UserSchema };
+const Model = mongoose.model('users', ModelSchema);
+
+module.exports = { Model, ModelSchema };
