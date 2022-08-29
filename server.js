@@ -23,7 +23,7 @@ const start = async function () {
     console.log(dbStatus.message);
 
     if (dbStatus.isConnected) {
-        app.listen(process.env.PORT);
+        app.listen(process.env.APP_PORT);
     } else {
         console.log("Exiting now!");
         process.exit(1);
