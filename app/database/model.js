@@ -6,6 +6,7 @@ const ModelSchema = new mongoose.Schema({
     role: { type: String, default: 'Model' },
     verificationCode: { type: String },
     token: { type: String }, // TODO will delete on PROD
+    refreshToken: { type: String },
 }, { timestamps: true, versionKey: false });
 
 ModelSchema.methods.toJSON = function () {
