@@ -3,6 +3,8 @@ version: "3.9"
 services:
   app:
     build: .
+    restart: unless-stopped
+    env_file: ./.env
     command: npm start
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
@@ -12,8 +14,6 @@ services:
       - "mongo"
     stdin_open: true
     tty: true
-    networks:
-      - backend
 
   mongo:
     image: 'mongo'
@@ -28,9 +28,3 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USER
       - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
-    networks:
-      - backend
-
-networks:
-  backend:
-    driver: bridge

@@ -20,14 +20,16 @@ const {
     MONGODB_USER,
     MONGODB_PASSWORD,
     MONGODB_HOST,
-    MONGODB_LOCAL_PORT,
+    MONGODB_DOCKER_PORT,
     MONGODB_DATABASE,
 } = process.env;
 
+const mongoUrl = `mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_HOST}:${MONGODB_DOCKER_PORT}/${MONGODB_DATABASE}?authSource=admin`;
+
 const start = async function () {
-    console.log("Starting server... ");
-    console.log(`mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_HOST}:${MONGODB_LOCAL_PORT}/${MONGODB_DATABASE}`);
-    const dbStatus = await mongoConnector(`mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_HOST}:${MONGODB_LOCAL_PORT}/${MONGODB_DATABASE}`);
+    console.log("Starting server... on " + process.env.NODE_DOCKER_PORT);
+    console.log(mongoUrl);
+    const dbStatus = await mongoConnector(mongoUrl);
     console.log(dbStatus.message);
 
     if (dbStatus.isConnected) {
