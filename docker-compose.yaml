@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    command: npm start
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+    volumes:
+      - .:/usr/app
+    depends_on:
+      - "mongo"
+    stdin_open: true
+    tty: true
+    networks:
+      - backend
+
+  mongo:
+    image: 'mongo'
+    restart: unless-stopped
+    container_name: 'mongo-node'
+    ports:
+      - $MONGODB_LOCAL_PORT:$MONGODB_DOCKER_PORT
+    volumes:
+      - ./mongodb/files:/data/db
+      - ./mongodb/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    env_file: ./.env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USER
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
