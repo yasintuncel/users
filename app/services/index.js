@@ -4,6 +4,7 @@ const insert = require('./insert');
 const update = require('./update');
 const remove = require('./remove');
 const selectByEmail = require('./selectByEmail');
+const resetPassword = require('./resetPassword');
 
 module.exports = {
     selectOne,
@@ -13,4 +14,5 @@ module.exports = {
     remove,
 
     selectByEmail,
+    resetPassword
 }

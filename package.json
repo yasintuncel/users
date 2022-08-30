@@ -16,6 +16,8 @@
     "http-status": "^1.5.2",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.5.3"
+    "mongoose": "^6.5.3",
+    "nodemailer": "^6.7.8",
+    "randomstring-yt": "^1.0.5"
   }
 }

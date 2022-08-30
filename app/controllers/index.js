@@ -4,6 +4,7 @@ const onPost = require('./onPost');
 const onPatch = require('./onPatch');
 const onDelete = require('./onDelete');
 const onLogin = require('./onLogin');
+const onResetPassword = require('./onResetPassword');
 
 module.exports = {
     onGet,
@@ -11,5 +12,6 @@ module.exports = {
     onPost,
     onPatch,
     onDelete,
-    onLogin
+    onLogin,
+    onResetPassword
 };
